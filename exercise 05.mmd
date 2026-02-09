@@ -1,0 +1,26 @@
+---
+config:
+      theme: redux
+---
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Browser->>Server: Requests SPA page (GET /spa)
+    activate Server
+    Server-->>Browser: Sends HTML of the SPA page
+    deactivate Server
+
+    Browser->>Server: Requests JavaScript file (GET main.js)
+    activate Server
+    Server-->>Browser: Sends JavaScript file
+    deactivate Server
+
+    Note right of Browser: JavaScript runs and prepares the page
+
+    Browser->>Server: Requests notes data (GET /data.json)
+    activate Server
+    Server-->>Browser: Sends JSON with all notes
+    deactivate Server
+
+    Note right of Browser: Browser displays notes on the page without reloading
