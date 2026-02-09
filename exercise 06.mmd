@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Note right of Browser: User types a note and clicks "Save"
+
+    Browser->>Server: Sends new note data (POST /new_note_spa)
+    activate Server
+    Note right of Server: Server saves the note
+    Server-->>Browser: Sends confirmation and new note data (JSON)
+    deactivate Server
+
+    Note right of Browser: Browser updates the page immediately without reloading
